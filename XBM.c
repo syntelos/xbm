@@ -235,7 +235,8 @@ void XBMSetRasterStream(XBM* xbm, unsigned int x, unsigned int y,
                         unsigned int w, unsigned int h, 
                         const unsigned char* bits)
 {
-    const unsigned int riw = ((0 < (w>>3))?(w>>3):(1));
+    const unsigned int riw = max(1,((w+7))/8);
+
     const unsigned int srz = ((8 < w)?(8):(w));
 
     const unsigned int riz = (riw * h);
